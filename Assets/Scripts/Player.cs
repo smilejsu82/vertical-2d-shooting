@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     public float speed = 1f;
     public int life = 3;
-    private int boom;
+    public int boom;
     private int power;
     private float delta = 0;
     private float span = 0.1f;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public Action onResetPosition;
     public Action onGameOver;
     public Action onBoom;
+    public Action onGetBoomItem;
 
     public bool isBoom = false;
     
@@ -135,6 +136,9 @@ public class Player : MonoBehaviour
                         boom = MAX_BOOM;
                         GameManager.Instance.score += 500;
                     }
+                    
+                    onGetBoomItem();
+
                     break;
                 
                 case Item.ItemType.Coin:
