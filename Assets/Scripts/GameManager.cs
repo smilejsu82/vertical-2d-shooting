@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     
     private float delta;
     private float span = 2;
-    private int score = 0;
+    public int score = 0;
 
     public System.Action<Enemy> onCreateEnemy;
 

@@ -3,9 +3,22 @@ using UnityEngine;
 public class GameMain : MonoBehaviour
 {
     public Player player;
+    public UIGame uiGame;
     public UIGameOver uiGameOver;
+    public GameObject boomPrefab;
     void Start()
     {
+        player.onBoom = () =>
+        {
+            GameObject boomGo = Instantiate(boomPrefab);
+            Boom boom = boomGo.GetComponent<Boom>();
+            boom.onFinishBoom = () =>
+            {
+                Destroy(boomGo);
+                player.isBoom = false;
+            };
+        };
+        
         player.onResetPosition = () =>
         {
             Debug.Log($"<color=yellow>{GameManager.Instance.isGameOver}</color>");

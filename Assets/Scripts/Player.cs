@@ -6,15 +6,24 @@ public class Player : MonoBehaviour
 {
     public GameObject playerBulletPrefab;
     public Transform firePoint;
+    
+    private const int MAX_BOOM = 3;
+    private const int MAX_POWER = 3;
+    
     private Animator anim;
     public float speed = 1f;
     public int life = 3;
+    private int boom;
+    private int power;
     private float delta = 0;
     private float span = 0.1f;
     private bool isInvincibility = false;
     
     public Action onResetPosition;
     public Action onGameOver;
+    public Action onBoom;
+
+    public bool isBoom = false;
     
 
     private void Start()
@@ -26,7 +35,28 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+        Boom();
         Reload();
+    }
+
+    private void Boom()
+    {
+        if (!Input.GetButton("Fire2"))
+            return;
+
+        if(isBoom)
+            return;
+
+        if (boom <= 0)
+        {
+            Debug.Log("폭탄이 없습니다.");
+            return;
+        }
+
+        isBoom = true;
+        this.boom--;
+        
+        onBoom();
     }
 
     private void Reload()
@@ -91,8 +121,40 @@ public class Player : MonoBehaviour
             {
                 Destroy(other.gameObject);
             }
+        }
+        else if (other.gameObject.CompareTag("Item"))
+        {
+            Item item = other.gameObject.GetComponent<Item>();
+            switch (item.itemType)
+            {
+                case Item.ItemType.Boom:
+                    Debug.Log("폭탄을 획득했다!");
+                    boom++;
+                    if (boom >= MAX_BOOM)
+                    {
+                        boom = MAX_BOOM;
+                        GameManager.Instance.score += 500;
+                    }
+                    break;
+                
+                case Item.ItemType.Coin:
+                    Debug.Log("동전을 획득했다!");
+                    GameManager.Instance.score += 1000;
+                    break;
+                
+                case Item.ItemType.Power:
+                    Debug.Log("파워를 획득했다!");
+                    power++;
+                    if (power >= MAX_POWER)
+                    {
+                        power = MAX_POWER;
+                        GameManager.Instance.score += 500;
+                    }
+
+                    break;
+            }
             
-            
+            Destroy(item.gameObject);
         }
     }
 

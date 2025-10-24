@@ -223,10 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e5d46088c353f46a5266b3886ccc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boomPrefab: {fileID: 8164516003279550397, guid: bfa816d7cf2939346b81a114dde8900e, type: 3}
   playerBulletPrefab: {fileID: 7476367956055217807, guid: 6cddcd8d9fd90884bba59583600ee8a8, type: 3}
   firePoint: {fileID: 90376699}
   speed: 3
   life: 1
+  isBoom: 0
 --- !u!95 &14604299
 Animator:
   serializedVersion: 7
@@ -1054,6 +1056,7 @@ MonoBehaviour:
   - {fileID: 1523949999}
   - {fileID: 1186339243}
   isGameOver: 0
+  score: 0
 --- !u!4 &941556197
 Transform:
   m_ObjectHideFlags: 0
@@ -1099,7 +1102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 14604298}
+  uiGame: {fileID: 524641953}
   uiGameOver: {fileID: 1219544560}
+  boomPrefab: {fileID: 8164516003279550397, guid: bfa816d7cf2939346b81a114dde8900e, type: 3}
 --- !u!4 &965175792
 Transform:
   m_ObjectHideFlags: 0
