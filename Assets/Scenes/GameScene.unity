@@ -226,7 +226,7 @@ MonoBehaviour:
   playerBulletPrefab: {fileID: 7476367956055217807, guid: 6cddcd8d9fd90884bba59583600ee8a8, type: 3}
   firePoint: {fileID: 90376699}
   speed: 3
-  life: 1
+  life: 3
   boom: 0
   isBoom: 0
 --- !u!95 &14604299
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999,999,999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1359,6 +1359,10 @@ MonoBehaviour:
   - {fileID: 332175846}
   - {fileID: 1523949999}
   - {fileID: 1186339243}
+  itemPrefabs:
+  - {fileID: 1461049869160540687, guid: da0d85093dbda9d45b0ca086d28e796d, type: 3}
+  - {fileID: 8467370030755666295, guid: 6d2aed44eae08cc48960bd46490c8169, type: 3}
+  - {fileID: 6664219333244218658, guid: 45f0498be523fea4fa10a7b8a88755d4, type: 3}
   isGameOver: 0
   score: 0
 --- !u!4 &941556197

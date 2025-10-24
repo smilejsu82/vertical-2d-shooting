@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public Action onGameOver;
     public Action onBoom;
     public Action onGetBoomItem;
+    public Action onHit;
 
     public bool isBoom = false;
     
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour
 
             if (this.life < 0)
             {
+                this.life = 0;
                 Debug.Log("==== GameOver ====");
                 onGameOver();
             }
@@ -116,6 +118,7 @@ public class Player : MonoBehaviour
                 Invoke("ResetPosition", 1f);
             }
 
+            onHit();
             this.gameObject.SetActive(false);
             
             if(other.gameObject.CompareTag("EnemyBullet"))

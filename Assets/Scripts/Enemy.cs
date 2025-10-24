@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 public class Enemy : MonoBehaviour
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
     public Sprite[] sprites;
     public SpriteRenderer spriteRenderer;
     public GameObject enemyBulletPrefab;
+
+    public Action onDie;
     private Coroutine coroutine;
     private float delta = 0;
     private float span = 1;
@@ -76,6 +79,7 @@ public class Enemy : MonoBehaviour
         
         if (health <= 0)
         {
+            onDie();
             Destroy(this.gameObject);
         }
     }
