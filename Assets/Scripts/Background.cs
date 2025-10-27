@@ -12,6 +12,30 @@ public class Background : MonoBehaviour
     private void Start()
     {
         this.viewHeight = Camera.main.orthographicSize * 2;
+        
+        //(startIndex + 1) % sprites.Length;
+
+        //단순 순환 하고싶을때 
+        // for (int i = 0; i < 10; i++)
+        // {
+        //     int idx = i % 3;
+        //     Debug.Log(idx);
+        // }
+
+        //이전 인덱스로 순환 하고싶을때 
+        // int length = 3;
+        // for (int i = 0; i < 10; i++)
+        // {
+        //     int idx = (i - 1  + length) % length;
+        //     Debug.Log(idx);
+        // }
+        
+        // int length = 3;
+        // for (int i = 0; i < 10; i++)
+        // {
+        //     int idx = (i + 1) % length;
+        //     Debug.Log(idx);
+        // }
     }
 
     private void Move()
